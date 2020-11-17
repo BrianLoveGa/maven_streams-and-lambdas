@@ -25,7 +25,7 @@ public class TestUniquelyNamedPersons {
 
         Stream
                 .generate(factory::createRandomPerson)
-                .limit(9999)
+                .limit(97979)
                 .forEach(warehouse::addPerson);
     }
 
@@ -46,7 +46,7 @@ public class TestUniquelyNamedPersons {
     @Test
     public void testGetFirstNUniquelyNamedPeople() {
         // : Given
-        Integer valueOfN = 4;
+        Integer valueOfN = 2;
 
         // when
         List<String> actual = warehouse
