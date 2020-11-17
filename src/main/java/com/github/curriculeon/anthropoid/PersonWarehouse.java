@@ -44,10 +44,13 @@ public final class PersonWarehouse implements Iterable<Person> {
      * @return list of uniquely named Person objects
      */ //TODO
     public Stream<Person> getUniquelyNamedPeople() {
+        List<String> distinctNames = getNames()
+                .stream()
+                .distinct()
+                .collect(Collectors.toList());
         return people
                 .stream()
-                .filter(person -> Collections.frequency(getNames(), person.getName()) == 1); // white-label people whose name occurs exactly once
-    }
+                .filter(person -> distinctNames.contains(person.getName())); }
 
 
     /**
@@ -64,7 +67,9 @@ public final class PersonWarehouse implements Iterable<Person> {
      * @return a Stream of respective
      */ //TODO
     public Stream<Person> getFirstNUniquelyNamedPeople(int n) {
-        return null;
+        return getUniquelyNamedPeople().limit(n);
+
+
     }
 
     /**
